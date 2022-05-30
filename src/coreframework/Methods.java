@@ -49,15 +49,6 @@ public class Methods extends Superclass {
         driver.navigate().back();
     }
 
-    public void CheckPageHeading(String xpath, String text) {
-        String title = driver.findElement(By.xpath(xpath)).getText();
-        if (title.equals(text)) {
-            System.out.println("Success-landed in correct page");
-        } else {
-            System.out.println("error in loading page");
-        }
-    }
-
     public void ClickRadioButton(String xpath) {
         WebElement element = driver.findElement(By.xpath(xpath));
         element.click();

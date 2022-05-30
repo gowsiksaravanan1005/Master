@@ -37,14 +37,12 @@ public class BrowserFactory extends Superclass{
     }
    @After
     public void CloseDriver(){
-       System.out.println("Driver Closed");
         driver.close();
     }
     @AfterStep
     public static void takeScreenshot(){
         TakesScreenshot takesScreenshot=(TakesScreenshot) driver;
         File srcFile=takesScreenshot.getScreenshotAs(OutputType.FILE);
-        System.out.println("Screenshot");
         File destFile=new File("Screenshots\\"+images+".png");
         try {
             FileUtils.copyFile(srcFile,destFile);

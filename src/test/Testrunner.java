@@ -10,9 +10,7 @@ import org.junit.runner.RunWith;
         glue = {"coreframework","Stepdefinitions"},
         plugin = { "pretty",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" },
-        //tags="@icici"
-        tags = "@flipkart-3 or @flipkart-1 or @flipkart-4 or @flipkart-2 "
-        //tags="@flipkart"
+        tags = "@search  or @mobiles or @wishlist or @login"
 )
 public class Testrunner {
 
