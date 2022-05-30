@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         plugin = { "pretty",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" },
         //tags="@icici"
-        tags = "@youtubeMusic"
+        tags = "@flipkart-3 or @flipkart-1 or @flipkart-4 or @flipkart-2 "
         //tags="@flipkart"
 )
 public class Testrunner {

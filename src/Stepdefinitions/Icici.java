@@ -27,7 +27,7 @@ public class Icici {
 
     @Then("Check the amount")
     public void checkTheAmount() {
-        methods.CheckPageText("//h1[contains(text(),'Fixed Deposit (FD) Calculator')]","Fixed Deposit (FD) Calculator");
+       // methods.CheckPageText("//h1[contains(text(),'Fixed Deposit (FD) Calculator')]","Fixed Deposit (FD) Calculator");
         methods.SwitchToFrame("paymframe");
         methods.Sleep(2000);
         methods.ClickRadioButton("(//label[@class='radiobtn'])[2][contains(text(),'Senior Citizen')]");
