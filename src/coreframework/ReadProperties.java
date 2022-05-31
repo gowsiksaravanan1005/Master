@@ -10,7 +10,7 @@ public class ReadProperties {
     public static void loadAllproperties(){
         if(properties==null){
             properties=new Properties();
-            String[] propArr={"Browser.properties","DBConnection.properties","Environment.properties","QueryString.properties"};
+            String[] propArr={"Browser.properties","DBConnection.properties","Environment.properties"};
             for(String arr:propArr){
                 try {
                     properties.load(new FileInputStream("./src/"+arr));
