@@ -18,14 +18,14 @@ public class Flipkartfunctionality {
 
     @Then("Enter Mobiles {string} in Search bar")
     public void enterMobilesInSearchBar(String Search) {
-        methods.SendKeys("//input[@title='Search for products, brands and more']",Search);
+        methods.EnterByXpath("//input[@title='Search for products, brands and more']",Search);
         methods.ClickByXpath("//button[@Type='submit']");
     }
 
     @Then("Print Mobile details")
     public void printMobileDetails() {
         methods.Sleep(2000);
-        String numberOfMobiles = methods.GetText("//span[@class='_10Ermr']");
+        String numberOfMobiles = methods.GetTextByXPath("//span[@class='_10Ermr']");
         System.out.println(numberOfMobiles);
         methods.Sleep(5000);
     }
@@ -36,16 +36,16 @@ public class Flipkartfunctionality {
         methods.Sleep(2000);
         methods.SelectByVisibleText("(//select[@class='_2YxCDZ'])[2]", "₹20000");
         methods.Sleep(3000);
-        String numberOfMobiles2 = methods.GetText("//span[@class='_10Ermr']");
+        String numberOfMobiles2 = methods.GetTextByXPath("//span[@class='_10Ermr']");
         System.out.println(numberOfMobiles2);
     }
 
     @And("Filter the brand {string}")
     public void filterTheBrand(String BrandName) {
-        methods.SendKeys("(//input[@type='text'])[2]", BrandName);
+        methods.EnterByXpath("(//input[@type='text'])[2]", BrandName);
         methods.ClickByXpath("//div[contains(text(),'SAMSUNG')]");
         methods.ImplicitWait(3000);
-        String numberOfMobiles3 = methods.GetText("//span[@class='_10Ermr']");
+        String numberOfMobiles3 = methods.GetTextByXPath("//span[@class='_10Ermr']");
         System.out.println(numberOfMobiles3);
         methods.ClickByXpath("(//span[contains(text(),'Clear all')])[2]");
         methods.ImplicitWait(10000);
@@ -56,7 +56,7 @@ public class Flipkartfunctionality {
         System.out.println("Mobile brand is selected succesfully");
         methods.ClickByXpath("//div[@class='THxusM _3yuvK8']");
         methods.ImplicitWait(3000);
-        String numberOfMobiles4= methods.GetText("//span[@class='_10Ermr']");
+        String numberOfMobiles4= methods.GetTextByXPath("//span[@class='_10Ermr']");
         System.out.println(numberOfMobiles4);
         //methods.ScrollDown();
         methods.ImplicitWait(10000);
@@ -67,41 +67,43 @@ public class Flipkartfunctionality {
         methods.ClickByXpath("(//div[@class='_4rR01T'])[1]");
         methods.ImplicitWait(3000);
         methods.WindowHandle();
-        String phoneModel = methods.GetText("//span[@class='B_NuCI']");
+        String phoneModel = methods.GetTextByXPath("//span[@class='B_NuCI']");
         System.out.println("Phone model:" + phoneModel);
-        String amount = methods.GetText("//div[@class='_30jeq3 _16Jk6d']");
+        String amount = methods.GetTextByXPath("//div[@class='_30jeq3 _16Jk6d']");
         System.out.println("Amount:" + amount);
-        String offer = methods.GetText("//div[@class='_3Ay6Sb _31Dcoz']");
+        String offer = methods.GetTextByXPath("//div[@class='_3Ay6Sb _31Dcoz']");
         System.out.println("Offer:" + offer);
         methods.ClickByXpath("//button[@class='_2KpZ6l _2U9uOA _3v1-ww']");
         methods.ImplicitWait(3000);
+        methods.CloseAllWindows();
     }
 
     @Then("Check {string} to estimate delivery")
     public void checkToEstimateDelivery(String Pincode) {
-        String Cart=methods.GetText("//div[@class='_3g_HeN']");
+        String Cart=methods.GetTextByXPath("//div[@class='_3g_HeN']");
         System.out.println(Cart);
         methods.ClickByXpath("//button[@class='_2MMH-I']");
         methods.ImplicitWait(5000);
-        methods.SendKeys("//input[@placeholder='Enter pincode']",Pincode);
+        methods.EnterByXpath("//input[@placeholder='Enter pincode']",Pincode);
         methods.ClickByXpath("//div[contains(text(),'Submit')]");
         methods.ImplicitWait(5000);
-        String EstimateDate=methods.GetText("//div[@class='_2pqhhf']");
+        String EstimateDate=methods.GetTextByXPath("//div[@class='_2pqhhf']");
         System.out.println("Estimate date of delivery: "+EstimateDate);
     }
 
     @Then("Print Rate of the product")
     public void printRateOfTheProduct() {
         methods.ImplicitWait(3000);
-        String Amount=methods.GetText("(//div[@class='_2npqm0']//..//..//span)[1]");
+        String Amount=methods.GetTextByXPath("(//div[@class='_2npqm0']//..//..//span)[1]");
         System.out.println("Price: "+Amount);
-        String Discount=methods.GetText("(//div[@class='_2npqm0']//..//..//span)[2]");
+        String Discount=methods.GetTextByXPath("(//div[@class='_2npqm0']//..//..//span)[2]");
         System.out.println("Discount: "+Discount);
-        String DeliveryCharges=methods.GetText("(//div[@class='_2npqm0']//..//..//span)[3]");
+        String DeliveryCharges=methods.GetTextByXPath("(//div[@class='_2npqm0']//..//..//span)[3]");
         System.out.println("DeliveryCharges: "+DeliveryCharges);
-        String PackagingFee=methods.GetText("(//div[@class='_2npqm0']//..//..//span)[4]");
+        String PackagingFee=methods.GetTextByXPath("(//div[@class='_2npqm0']//..//..//span)[4]");
         System.out.println("PackagingFee: "+PackagingFee);
-        String TotalPrice=methods.GetText("(//div[@class='_2npqm0']//..//..//span)[5]");
+        String TotalPrice=methods.GetTextByXPath("(//div[@class='_2npqm0']//..//..//span)[5]");
         System.out.println("TotalPrice: "+TotalPrice);
+
     }
 }

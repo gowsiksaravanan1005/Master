@@ -35,10 +35,10 @@ public class BrowserFactory extends Superclass{
     public void LaunchTheBrowser(){
         launchTheApp();
     }
-   @After
-    public void CloseDriver(){
-        driver.close();
-    }
+//   @After
+//    public void CloseDriver(){
+//        driver.close();
+//    }
     @AfterStep
     public static void takeScreenshot(){
         TakesScreenshot takesScreenshot=(TakesScreenshot) driver;

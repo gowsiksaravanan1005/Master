@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" },
 
         tags = "@flipkartmobiles or @flipkartwishlist or @flipkartlogin or @flipkartsearch"
+        //tags="@flipkartlogin"
 )
 public class Testrunner {
 
