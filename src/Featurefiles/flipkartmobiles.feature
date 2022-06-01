@@ -1,6 +1,6 @@
-Feature: Flipkart
-  @mobiles
-  Scenario Outline: Flipkart Scenario
+Feature: Mobile Scenario
+  @flipkartmobiles
+  Scenario Outline: Mobile Scenario
     Given Flipkart login
     Then Enter Mobiles "<Enter>" in Search bar
     Then Print Mobile details

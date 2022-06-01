@@ -1,4 +1,4 @@
-Feature: Flipkart
-  @login
-  Scenario: Flipkart Scenario
+Feature: Login Scenario
+  @flipkartlogin
+  Scenario: Login Scenario
     Given Flipkart login
