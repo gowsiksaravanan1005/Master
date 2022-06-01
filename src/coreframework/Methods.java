@@ -1,12 +1,9 @@
 package coreframework;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.*;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
@@ -14,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class Methods extends Superclass {
@@ -22,7 +20,7 @@ public class Methods extends Superclass {
     }
 
     public void ClickByID(String id) {
-        driver.findElement(By.xpath(id)).click();
+        driver.findElement(By.id(id)).click();
     }
 
     public void Sleep(int seconds) {
@@ -33,12 +31,28 @@ public class Methods extends Superclass {
         }
     }
 
-    public void SendKeys(String xpath, String value) {
+    public void EnterByXpath(String xpath, String value) {
         driver.findElement(By.xpath(xpath)).sendKeys(value);
     }
 
-    public String GetText(String xpath) {
+    public void EnterByID(String id, String value) {
+        driver.findElement(By.id(id)).sendKeys(value);
+    }
+
+    public void EnterByWebElement(WebElement element, String value) {
+        element.sendKeys(value);
+    }
+
+    public String GetTextByXPath(String xpath) {
         return driver.findElement(By.xpath(xpath)).getText();
+    }
+
+    public String GetTextById(String id) {
+        return driver.findElement(By.id(id)).getText();
+    }
+
+    public String GetTextByWebElement(WebElement element) {
+        return element.getText();
     }
 
     public String GetAttribute(String xpath, String attribute) {
@@ -54,8 +68,16 @@ public class Methods extends Superclass {
         element.click();
     }
 
-    public void Clear(String xpath) {
+    public void ClearByXpath(String xpath) {
         driver.findElement(By.xpath(xpath)).clear();
+    }
+
+    public void ClearById(String id) {
+        driver.findElement(By.id(id)).clear();
+    }
+
+    public void ClearByWebElement(WebElement element) {
+        element.clear();
     }
 
     public void AlertDismiss() {
@@ -83,28 +105,19 @@ public class Methods extends Superclass {
         driver.switchTo().frame(name);
     }
 
-    public void ScrollUp() {
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("window.scrollBy(0,-350)");
-    }
-
-    public void ScrollDown() {
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("window.scrollBy(0,350)");
-    }
-
-    public void ScrollDownAddPixels(String script) {
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript(script);
-    }
-
     public void ImplicitWait(int second) {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(second));
     }
 
-    public void ScrollDownToVisibleText(String xpath) {
+    public void ScrollUntilTheDataVisibleByXpath(String xpath) {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         WebElement element = driver.findElement(By.xpath(xpath));
+        jse.executeScript("arguments[0].scrollIntoView;", element);
+    }
+
+    public void ScrollUntilTheDataVisibleById(String id) {
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        WebElement element = driver.findElement(By.id(id));
         jse.executeScript("arguments[0].scrollIntoView;", element);
     }
 
@@ -180,8 +193,94 @@ public class Methods extends Superclass {
         driver.switchTo().window(mainwindow);
     }
 
-    public void ClearAndEnterData(String xpath, String data) {
+    public void ClearAndEnterByXPath(String xpath, String data) {
         driver.findElement(By.xpath(xpath)).clear();
         driver.findElement(By.xpath(xpath)).sendKeys(data);
     }
+
+    public void ClearAndEnterById(String id, String data) {
+        driver.findElement(By.id(id)).clear();
+        driver.findElement(By.id(id)).sendKeys(data);
+    }
+
+    public void ClearAndEnterByElement(WebElement element, String data) {
+        element.clear();
+        element.sendKeys();
+    }
+
+    public void ClickOutside() {
+        Actions action = new Actions(driver);
+        action.moveByOffset(0, 0).click().build().perform();
+    }
+
+    public void FocusOnTheElement(WebElement element) {
+        new Actions(driver).moveToElement(element).perform();
+    }
+
+    public void FocusOnTheElementByUsingID(String id) {
+        new Actions(driver).moveToElement(driver.findElement(By.id(id))).perform();
+    }
+
+    public void FocusOnTheElementByUsingXPath(String xpath) {
+        new Actions(driver).moveToElement(driver.findElement(By.xpath(xpath))).perform();
+    }
+
+    public boolean IsDisplayedByXpath(String xpath) {
+        String text = GetTextByXPath(xpath);
+        if (text.length() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean IsDisplayedById(String id) {
+        String text = GetTextByXPath(id);
+        if (text.length() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void CloseCurrentWindow() {
+        driver.close();
+    }
+
+    public void CloseAllWindows() {
+        driver.quit();
+    }
+
+    public String GetPageTitle() {
+        return driver.getTitle();
+    }
+
+    public void CheckIsSelectedByXpath(String xpath) {
+        WebElement element = driver.findElement(By.xpath(xpath));
+        element.isSelected();
+    }
+
+    public void CheckIsSelectedById(String xpath) {
+        WebElement element = driver.findElement(By.xpath(xpath));
+        element.isSelected();
+    }
+
+    public FluentWait<WebDriver> FluentWait() {
+        return new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(20))
+                .pollingEvery(Duration.ofSeconds(5)).ignoring(TimeoutException.class)
+                .ignoring(NoSuchElementException.class).ignoring(StaleElementReferenceException.class);
+    }
+    public void WaitForTheElementToAppear(WebElement element){
+        FluentWait().until(ExpectedConditions.visibilityOf(element));
+    }
+//    public void WaitUntilPageLoad(){
+//        try {
+//            ExpectedCondition<Boolean> pageLoadCondition= driver->((JavascriptExecutor) driver)
+//            .executeScript("return document.readyState").toString().matches("interactive|complete|Ready");
+//            Object driverWait = new Object();
+//            driverWait.until(pageLoadCondition);
+//    }catch(Exception e){
+//        }
+//return;
+//}
 }
