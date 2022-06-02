@@ -140,9 +140,9 @@ public class Methods extends Superclass {
     }
 
     public void LogFile(String scenarioName) {
-        SimpleDateFormat formatter = new SimpleDateFormat("d-MMM-YY HH-mm");
-        Date date = new Date(System.currentTimeMillis());
-        File file = new File("ConsoleOutput\\" + scenarioName + formatter.format(date) + ".txt");
+//        SimpleDateFormat formatter = new SimpleDateFormat("d-MMM-YY HH-mm");
+//        Date date = new Date(System.currentTimeMillis());
+        File file = new File("ConsoleOutput\\"  +scenarioName + ".txt");
         PrintStream stream = null;
         try {
             stream = new PrintStream(file);
@@ -270,17 +270,15 @@ public class Methods extends Superclass {
                 .pollingEvery(Duration.ofSeconds(5)).ignoring(TimeoutException.class)
                 .ignoring(NoSuchElementException.class).ignoring(StaleElementReferenceException.class);
     }
-    public void WaitForTheElementToAppear(WebElement element){
+
+    public void WaitForTheElementToAppear(WebElement element) {
         FluentWait().until(ExpectedConditions.visibilityOf(element));
     }
-//    public void WaitUntilPageLoad(){
-//        try {
-//            ExpectedCondition<Boolean> pageLoadCondition= driver->((JavascriptExecutor) driver)
-//            .executeScript("return document.readyState").toString().matches("interactive|complete|Ready");
-//            Object driverWait = new Object();
-//            driverWait.until(pageLoadCondition);
-//    }catch(Exception e){
-//        }
-//return;
-//}
+
+    public void WaitUntilPageLoad() {
+        JavascriptExecutor j = (JavascriptExecutor) driver;
+        j.executeScript("return document.readyState").toString().equals("complete");
+    }
+
+
 }

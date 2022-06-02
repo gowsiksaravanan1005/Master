@@ -1,8 +1,11 @@
 Feature: Search scenario
   @flipkartsearch
-  Scenario: Search scenario
-    Given Flipkart login
+  Scenario Outline: Search scenario
+    Given Flipkart login for Search
     Then Search Mobiles in search bar
+    Examples:
+      | feature        |
+      | flipkartsearch |
 
 
     

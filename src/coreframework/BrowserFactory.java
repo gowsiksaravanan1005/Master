@@ -12,8 +12,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Driver;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class BrowserFactory extends Superclass{
     //public static WebDriver driver;
@@ -32,13 +39,14 @@ public class BrowserFactory extends Superclass{
     }
 
    @Before
-    public void LaunchTheBrowser(){
+    public void LaunchTheBrowser() throws IOException {
         launchTheApp();
     }
-//   @After
-//    public void CloseDriver(){
-//        driver.close();
-//    }
+
+   @After
+    public void CloseDriver(){
+        driver.close();
+    }
     @AfterStep
     public static void takeScreenshot(){
         TakesScreenshot takesScreenshot=(TakesScreenshot) driver;

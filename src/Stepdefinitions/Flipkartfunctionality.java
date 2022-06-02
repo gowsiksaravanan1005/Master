@@ -1,20 +1,22 @@
 package Stepdefinitions;
 
+import com.aventstack.extentreports.gherkin.model.Feature;
 import coreframework.Methods;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.netty.handler.codec.http.DefaultHttpRequest;
+import org.apache.commons.io.FilenameUtils;
+import org.junit.Test;
+
+import java.io.IOException;
+
+import static io.cucumber.gherkin.Parser.RuleType.Scenario;
 
 public class Flipkartfunctionality {
     Methods methods = new Methods();
-
-
-    @Given("Flipkart login")
-    public void flipkartLogin() {
-        methods.LogFile("Flipkart");
-        methods.ClickByXpath("//button[@class='_2KpZ6l _2doB4z']");
-        methods.Sleep(2000);
-    }
 
     @Then("Enter Mobiles {string} in Search bar")
     public void enterMobilesInSearchBar(String Search) {
@@ -38,6 +40,13 @@ public class Flipkartfunctionality {
         methods.Sleep(3000);
         String numberOfMobiles2 = methods.GetTextByXPath("//span[@class='_10Ermr']");
         System.out.println(numberOfMobiles2);
+    }
+
+    @Then("Search Mobiles in search bar")
+    public void searchMobilesInSearchBar() {
+        methods.EnterByXpath("//input[@title='Search for products, brands and more']","Mobiles");
+        System.out.println("Data entered successfully in search bar");
+        methods.ClickByXpath("//button[@Type='submit']");
     }
 
     @And("Filter the brand {string}")
@@ -75,7 +84,6 @@ public class Flipkartfunctionality {
         System.out.println("Offer:" + offer);
         methods.ClickByXpath("//button[@class='_2KpZ6l _2U9uOA _3v1-ww']");
         methods.ImplicitWait(3000);
-        methods.CloseAllWindows();
     }
 
     @Then("Check {string} to estimate delivery")
