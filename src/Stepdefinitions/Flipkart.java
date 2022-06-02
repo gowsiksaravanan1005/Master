@@ -1,6 +1,5 @@
 package Stepdefinitions;
 
-import com.aventstack.extentreports.gherkin.model.Feature;
 import coreframework.BrowserFactory;
 import coreframework.Methods;
 import io.cucumber.java.Scenario;
