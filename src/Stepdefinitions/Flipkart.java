@@ -1,12 +1,8 @@
 package Stepdefinitions;
 
 import coreframework.BrowserFactory;
-import coreframework.Methods;
-import io.cucumber.java.Scenario;
+import Reusables.Methods;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import org.checkerframework.checker.units.qual.s;
-import org.junit.Test;
 
 public class Flipkart {
     Methods methods= new Methods();

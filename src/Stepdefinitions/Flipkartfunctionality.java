@@ -1,19 +1,8 @@
 package Stepdefinitions;
 
-import com.aventstack.extentreports.gherkin.model.Feature;
-import coreframework.Methods;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
+import Reusables.Methods;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.netty.handler.codec.http.DefaultHttpRequest;
-import org.apache.commons.io.FilenameUtils;
-import org.junit.Test;
-
-import java.io.IOException;
-
-import static io.cucumber.gherkin.Parser.RuleType.Scenario;
 
 public class Flipkartfunctionality {
     Methods methods = new Methods();

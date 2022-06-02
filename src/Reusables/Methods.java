@@ -1,4 +1,4 @@
-package coreframework;
+package Reusables;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -7,9 +7,7 @@ import org.openqa.selenium.support.ui.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
-import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -142,7 +140,7 @@ public class Methods extends Superclass {
     public void LogFile(String scenarioName) {
 //        SimpleDateFormat formatter = new SimpleDateFormat("d-MMM-YY HH-mm");
 //        Date date = new Date(System.currentTimeMillis());
-        File file = new File("ConsoleOutput\\"  +scenarioName + ".txt");
+        File file = new File("Reports\\ConsoleOutput\\"  +scenarioName + ".txt");
         PrintStream stream = null;
         try {
             stream = new PrintStream(file);
