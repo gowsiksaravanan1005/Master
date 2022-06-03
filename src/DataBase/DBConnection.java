@@ -13,7 +13,7 @@ public class DBConnection {
     public static DBConnection getInstance(){return (obj==null)?obj=new DBConnection() : obj;}
 
     public static void createConnection(){
-        String connectionUrl = "jbc:sqlserver://" + "KARTHIK\\SQLEXPRESS" + ";database=master" + ";integratedSecurity=true" + ";UseNTLMv2=true" + ";Trusted_Connection=yes"+";Encrypt=true" + ";TrustServerCertificate=true";
+        String connectionUrl = "jbc:sqlserver://" + "Gowsika\\SQLEXPRESS" + ";database=master" + ";integratedSecurity=true" + ";UseNTLMv2=true" + ";Trusted_Connection=yes"+";Encrypt=true" + ";TrustServerCertificate=true";
         try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             Connection con= DriverManager.getConnection(connectionUrl);
