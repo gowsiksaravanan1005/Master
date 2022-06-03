@@ -1,4 +1,4 @@
-package DataBase;
+package coreframework;
 
 public enum Environment {
     Select(""), SYST("");
