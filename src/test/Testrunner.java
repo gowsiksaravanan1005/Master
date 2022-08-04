@@ -16,8 +16,6 @@ import org.junit.runner.RunWith;
         //tags = "@flipkartmobiles or @flipkartwishlist or @flipkartlogin or @flipkartsearch"
         //tags="@flipkartsearch or @flipkartlogin"
         tags="@icici-1"
-        //tags="@flipkartlogin"
-        //tags="@Regression"
 )
 public class Testrunner {
 
