@@ -2,7 +2,10 @@ package Reusables;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,6 +18,10 @@ import java.util.Set;
 public class Methods extends Superclass {
     public void ClickByXpath(String xpath) {
         driver.findElement(By.xpath(xpath)).click();
+    }
+
+    public void ClickByWebElement(WebElement element) {
+        element.click();
     }
 
     public void ClickByID(String id) {
@@ -140,7 +147,7 @@ public class Methods extends Superclass {
     public void LogFile(String scenarioName) {
 //        SimpleDateFormat formatter = new SimpleDateFormat("d-MMM-YY HH-mm");
 //        Date date = new Date(System.currentTimeMillis());
-        File file = new File("Reports\\ConsoleOutput\\"  +scenarioName + ".txt");
+        File file = new File("Reports\\ConsoleOutput\\" + scenarioName + ".txt");
         PrintStream stream = null;
         try {
             stream = new PrintStream(file);
@@ -225,20 +232,12 @@ public class Methods extends Superclass {
 
     public boolean IsDisplayedByXpath(String xpath) {
         String text = GetTextByXPath(xpath);
-        if (text.length() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return text.length() > 0;
     }
 
     public boolean IsDisplayedById(String id) {
         String text = GetTextByXPath(id);
-        if (text.length() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return text.length() > 0;
     }
 
     public void CloseCurrentWindow() {
@@ -277,6 +276,5 @@ public class Methods extends Superclass {
         JavascriptExecutor j = (JavascriptExecutor) driver;
         j.executeScript("return document.readyState").toString().equals("complete");
     }
-
 
 }

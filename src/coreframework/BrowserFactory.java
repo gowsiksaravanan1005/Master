@@ -2,18 +2,20 @@ package coreframework;
 
 import Reusables.Methods;
 import Reusables.Superclass;
-import io.cucumber.java.After;
-import io.cucumber.java.AfterStep;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
+import com.aventstack.extentreports.gherkin.model.Feature;
+import io.cucumber.java.*;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Reporter;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
 
 public class BrowserFactory extends Superclass {
     //public static WebDriver driver;
@@ -65,5 +67,14 @@ public class BrowserFactory extends Superclass {
     @AfterStep
     public void as(Scenario music){
         music.attach(getByteScreenshot(),"image/png","");
+    }
+
+    @BeforeStep
+    public void sce(Scenario scenario){
+        System.out.println("Scenario:" + scenario.getName());
+        String featureName = FilenameUtils.getBaseName(scenario.getUri().toString());
+        System.out.println("Feature: "+ featureName);
+        String fullFeatureName = FilenameUtils.getName(scenario.getUri().toString());
+        System.out.println("Feature file Name: "+fullFeatureName);
     }
 }
