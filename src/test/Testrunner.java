@@ -12,9 +12,6 @@ import org.junit.runner.RunWith;
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "html:Reports/cucumber-report/cucumber.html",
                 "json:Reports/cucumber-report/cucumber.json"},
-
-        //tags = "@flipkartmobiles or @flipkartwishlist or @flipkartlogin or @flipkartsearch"
-        //tags="@flipkartsearch or @flipkartlogin"
         tags="@javatpoint"
         //tags="@Regression"
 )
